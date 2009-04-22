@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'optparse'
+
+options = {:all => false}
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: [-a] [attraction_name]"
+  
+  opts.separator ""
+  
+  opts.on("-a", "--all", "Add all attractions in attractions folder.  Original post dates are preserverd, e.g. --all") do |a|
+    options[:all] = a
+  end
+end
+
+parser.parse! ARGV
+
+def parse_command? 
+  @parse_command
+end
+@parse_command = true
+attributes = {}
+body = ""
+File.open(File.dirname(__FILE__)+"/../attractions/#{ARGV[0]}.markdown",'r').each do |line|
+  if line =~ /@(\w+)/ and parse_command?
+     attribute = $1
+     line.slice!('@'+$1)
+     attributes[attribute.to_sym] = line
+  else
+    @parse_command = false
+  end
+  
+  unless parse_command?
+    body += line
+  end
+end
+attributes[:body => body]
+attraction = Attraction.first(:conditions => {:title => attributes[:tittle]}) || Attraction.create(attributes)
+attraction.author = attributes[:author]
+attraction.body = attributes[:body]
+
+attraction.save
+#puts attributes

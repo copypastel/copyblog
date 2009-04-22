@@ -9,12 +9,11 @@
         %div{ :style => 'padding-left: 10px; float: left;' }
           %u= @latest_attraction.title
         %div{ :style => 'color: white; float: right; padding-right: 10px;' }
-          = 'on ' + @latest_attraction.created_at.to_s
+          = 'on ' + @latest_attraction.published
     - @attractions.each do |att|
       .article
         %b
           %i
-            %a{ :href => att.url, :style => 'float: left;'}
-              = att.title
+            = link_to att.title, att, :style => 'float: left;'
         %span{ :class => 'article_date' }
-          = 'on' + att.when?
+          = 'on' + att.published

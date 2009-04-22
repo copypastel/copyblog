@@ -3,7 +3,9 @@ class CreateAttractions < ActiveRecord::Migration
     create_table :attractions do |t|
       t.string :title
       t.text   :body
+      t.string :author
       t.string :img_url
+      t.string :published
       t.timestamps
     end
   end
