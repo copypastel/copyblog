@@ -1,0 +1,14 @@
+#lessthan140.section
+  .header
+    %b //
+    less
+    %b{ :style => 'color: #ff7b00;'} than
+    140
+  - @tweets.each do |t|
+    .tweet_header
+      %a{ :url => t.owner_url }
+        %b= t.owner
+      %span{ :style => 'color: #888;' } 
+        %i t.ago?
+    .tweet
+      = t.msg

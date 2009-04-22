@@ -1,0 +1,20 @@
+#main_attraction.section
+  .header
+    %b //
+    main
+    %b{ :style => 'color: crimson;' } attraction
+    #main_image{ :style => "background: url(#{@latest_attraction.image});" }
+      #caption_bar
+      #caption_text
+        %div{ :style => 'padding-left: 10px; float: left;' }
+          %u= @latest_attraction.title
+        %div{ :style => 'color: white; float: right; padding-right: 10px;' }
+          = 'on ' + @latest_attraction.when?
+    - @attractions.each do |att|
+      .article
+        %b
+          %i
+            %a{ :href => att.url, :style => 'float: left;'}
+              = att.title
+        %span{ :class => 'article_date' }
+          = 'on' + att.when?
