@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require File.expand_path(File.dirname(__FILE__) + "/../lib/github_bot")
+
+github_list = Github::Bot.info_on('copypastel')
+
+github_list.each do |github_hash|
+  unless github_project = GithubProject.first(:conditions => {:name => github_hash[:name]})
+    github_project = GithubProject.create(github_hash)
+  else
+    github_project.attributes = github_hash
+    github_project.save
+  end
+end
