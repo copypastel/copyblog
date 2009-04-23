@@ -96,7 +96,7 @@ body{
 }
 
 .active_tag{
-  background: url(../../active.png); 
+  background: url(../images/active.png); 
   float: left; 
   margin-left: 10px; 
   height: 16px; 
