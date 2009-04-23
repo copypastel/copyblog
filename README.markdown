@@ -7,3 +7,6 @@ Dependencies
 ------------
 
 * RSpec
+* Hpricot
+* haml
+* Rails
