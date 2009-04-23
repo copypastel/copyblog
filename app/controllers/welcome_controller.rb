@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
   def index
     @tweets = []
-    @latest_attraction = Attraction.first || Attraction.create
     @attractions = Attraction.all
-    @github_projects = []
+    @latest_attraction = @attractions.delete_at(0)
+    @github_projects = GithubProject.all
     @flickr_images = []
   end
 end

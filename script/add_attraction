@@ -35,7 +35,7 @@ File.open(File.dirname(__FILE__)+"/../attractions/#{ARGV[0]}.markdown",'r').each
   end
 end
 attributes[:body => body]
-attraction = Attraction.first(:conditions => {:title => attributes[:tittle]}) || Attraction.create(attributes)
+attraction = Attraction.first(:conditions => {:title => attributes[:title]}) || Attraction.create(attributes)
 attraction.author = attributes[:author]
 attraction.body = attributes[:body]
 
