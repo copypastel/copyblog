@@ -4,6 +4,7 @@ class CreateGithubProjects < ActiveRecord::Migration
       t.date    :last_updated
       t.text    :name
       t.boolean :tag
+      t.string  :url
 
       t.timestamps
     end

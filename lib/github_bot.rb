@@ -24,6 +24,7 @@ module Github
           branches = ((commit_page/"#repo_sub_menu/.site"))
           tag_found = false
           
+          repos.last[:url] = repo_uri
           repos.last[:tag] = tag_found
         end
       end

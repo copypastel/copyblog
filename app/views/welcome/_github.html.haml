@@ -5,6 +5,6 @@
     %b{ :style => 'ff7b00'} hub
   - @github_projects.each do |ghp|
     .github_project
-      %a{ :href => ghp, :style => 'float: left;' }= ghp.name
+      %a{ :href => ghp.url, :style => 'float: left;' }= ghp.name
       - if ghp.active?
         .active_tag active

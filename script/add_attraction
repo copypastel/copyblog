@@ -35,9 +35,17 @@ File.open(File.dirname(__FILE__)+"/../attractions/#{ARGV[0]}.markdown",'r').each
   end
 end
 attributes[:body => body]
-attraction = Attraction.first(:conditions => {:title => attributes[:title]}) || Attraction.create(attributes)
-attraction.author = attributes[:author]
-attraction.body = attributes[:body]
+img_loc = File.expand_path(File.dirname(__FILE__)+"/../attractions/#{ARGV[0]}.png")
+new_image_loc = File.expand_path(File.dirname(__FILE__) + "/../public/images/attractions")
+if File.exist?(img_loc)
+  system("cp #{img_loc} #{new_image_loc}")
+  attributes[:img_url] = "images/attractions/#{ARGV[0]}.png"
+end
 
-attraction.save
+unless attraction = Attraction.first(:conditions => {:title => attributes[:title]})
+  Attraction.create(attributes)
+else
+  attraction.attributes = attributes
+  attraction.save
+end
 #puts attributes
