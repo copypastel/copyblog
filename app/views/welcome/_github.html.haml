@@ -2,7 +2,7 @@
   .header 
     %b //
     git 
-    %b{ :style => 'color: ff7b00;'} hub
+    %b{ :style => 'color: #ff7b00;'} hub
   - @github_projects.each do |ghp|
     .github_project
       %a{ :href => ghp.url, :style => 'float: left;' }= ghp.name
