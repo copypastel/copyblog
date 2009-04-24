@@ -20,6 +20,6 @@ class Attraction < ActiveRecord::Base
   end
   
   def body
-    Bluecloth.new(super).to_html
+    BlueCloth.new(super).to_html
   end
 end
