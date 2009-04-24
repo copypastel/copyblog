@@ -52,6 +52,7 @@ class App
     end
 
     attributes[:body] = file.read
+    attributes[:outline] = parse_sections(attributes[:body])
     attributes
   end
   # Moves image to proper location in public folder
@@ -61,6 +62,22 @@ class App
     
     new_img_loc = root + "/public/images/attractions"
     system("cp #{img_loc} #{new_img_loc}")
+  end
+  
+  def parse_sections(text)
+    body = StringIO.new(text)
+    outline = []
+    begin
+      while(true)
+        line = body.readline
+        if( (line =~ /#/) == 0)
+          #We arn't using h1 so first layer is h2
+          outline.push( [ line.gsub('#','').strip, line.count('#') - 1 ] )
+        end
+      end
+    rescue    
+    end
+    outline
   end
 end
 

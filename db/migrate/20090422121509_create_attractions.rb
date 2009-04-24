@@ -6,6 +6,7 @@ class CreateAttractions < ActiveRecord::Migration
       t.string :author
       t.string :img_url
       t.string :published
+      t.string :outline
       t.timestamps
     end
   end

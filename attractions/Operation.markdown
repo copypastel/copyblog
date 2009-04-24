@@ -2,11 +2,18 @@
 @author daicoden
 @published 01.20.08
 
+## Background
+
 When designing your own circuit boards, either just getting started or completing your 100th run, it always feels like you have the weight of the world threatening to violently end your existence. It is like being trained in juggling batons, but on your first live performance the ring master proclaims that you, yes you, will be juggling chain saws. One mistake will assuredly cause a loss of time, money, and possibly a right arm. Regardless, if you survive the chain saws, the addiction to create more complex and powerful systems will pull you into the world of PCB design and fabrication.  My experience has been that I spend maybe 10% of my time actually doing the electrical design and testing with breadboards only to then spend hours upon hours finding and evaluating components, optimizing layout, re-assuring (half heatedly) my co-workers that the design is correct, programming, and lots and lots of banging my head against the wall.
+
+### The current story
 
 On my most recent run I decided to purchase a board without a solder mask. Why? Because it’s cheaper. However, I still wanted the ground plane which results in a big metal sheet across the top of the board. Now this wouldn’t be terrible if this board wasn’t meant to be the power board which requires the soldering of a battery. Soldering a battery is always a little bit scary. You know in the back of your mind that it’s not particularly dangerous and nothing bad is really likely to happen but unfortunately, it is that “what if” that is destined to haunt you. What if you overheat the barrier between the chemicals and a small explosion occurs? It’s always nerve racking when dealing with a live system. Especially when you only have one battery and the project is due the next day. Below is the picture of the board I was working with and the red circle is where I was trying to connect the power of the battery.
 
+### He he I should edit this
 
 Alright, so maybe instant death isn’t awaiting me. I suppose worst case, the battery would heat up and the wires would start smoking. There might even be a loud pop, but then it would all be over. This being the case, I would like to note that when you are looking through the microscope suddenly tasting smoke before it manages to waft across the lens while heat begins to reach your finger tips, the first instinctual reaction for any person is to let go and scream. This has been scientifically proven. You must fight this! For if you jump back you will watch your project melt as the battery is still connected improperly. Instead you must proceed through the initial shock to get the battery disconnected at all costs even if it means sacrificing fingertips. I have often wondered if I am still identifiably by my fingerprints from 5 years ago.
+
+## Conclusion
 
 As I work, I often think of theme songs that go with the situation. In an intense situation this becomes unavoidable. I will get songs playing over and over in my head. In this instance I had the [Operation game](http://www.youtube.com/watch?v=tHntDDOQzk8) theme song stuck in my head. Over and over and over it went, “is it water on the knee? Operation! It’s an exploding battery you see! Operation!” I hated that game, the red light and buzzer sound were exactly equivalent to the smoke and heat. Imagine if by accidentally touching the probe to the sensor the man’s nose exploded in a shower of sparks and then you got yelled at by your parents for breaking the game. All I can think now is good god, what on earth happened to guide me towards a profession for which daily I have to accomplish tasks for which I am haunted. Haunted by a fat, red nosed man who has a spare rib or two. Well, I’m not the doctor for you.
