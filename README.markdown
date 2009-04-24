@@ -6,4 +6,6 @@ CopyBlog is a quick rails project which was designed for one thing, to allow eas
 Dependencies
 ------------
 
-* RSpec
+* Hpricot
+* haml
+* Rails
