@@ -9,3 +9,4 @@ Dependencies
 * Hpricot
 * haml
 * Rails
+* Bluecloth

@@ -18,4 +18,8 @@ class Attraction < ActiveRecord::Base
     string_array << "]"
     super(string_array)
   end
+  
+  def body
+    Bluecloth.new(super).to_html
+  end
 end
