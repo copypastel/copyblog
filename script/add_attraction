@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'optparse'
-
-$OPTIONS = {
+options = {
   :all => false,
-  :location => File.expand_path(File.dirname(__FILE__) + '/../attractions')
+  :location => File.expand_path(File.dirname(__FILE__) + '/../attractions'),
+  :img_url => '/images/attractions/'
 }
 
 parser = OptionParser.new do |opts|
@@ -13,74 +12,26 @@ parser = OptionParser.new do |opts|
   opts.separator ""
   
   opts.on("-a", "--all", "Add all attractions in attractions folder.  Original post dates are preserverd, e.g. --all") do |a|
-    $OPTIONS[:all] = a
+    options[:all] = a
   end
   
   opts.on("-l", "--location FILE", "Specify location for attractions, e.g. --location ~/attractions") do |l|
-    $OPTIONS[:location] = File.expand_path(File.dirname(__FILE__) + '/../' + l)
+    options[:location] = File.expand_path(File.dirname(__FILE__) + '/../' + l)
   end
 end
-
 parser.parse! ARGV
+
 class App
-  
-  def initialize
-  end
-  
-  def run
-    attributes = parse_attraction($OPTIONS[:location] + "/#{ARGV[0]}.markdown")
-
-    move_image_from($OPTIONS[:location] + "/#{ARGV[0]}.png")
-    attributes[:img_url] = "images/attractions/#{ARGV[0]}.png"
-    
-    unless attraction = Attraction.first(:conditions => {:title => attributes[:title]})
-      Attraction.create(attributes)
-    else
-      attraction.attributes = attributes
-      attraction.save
-    end
-  end
-  
-  def parse_attraction(file_name)
-    attributes = {}
-    file = File.open(file_name,'r')
-
-    while( line = file.readline and not (line =~ /@(\w+)/).nil? )
-      attribute = $1
-      line.slice!('@'+$1)
-      attributes[attribute.to_sym] = line
-    end
-
-    attributes[:body] = file.read
-    attributes[:outline] = parse_sections(attributes[:body])
-    attributes
-  end
-  # Moves image to proper location in public folder
-  def move_image_from(img_loc)
-    root = File.expand_path(File.dirname(__FILE__) + "/../")
-    system("mkdir #{root}/public/images/attractions") unless File.exist?(root + "/public/images/attractions")
-    
-    new_img_loc = root + "/public/images/attractions"
-    system("cp #{img_loc} #{new_img_loc}")
-  end
-  
-  def parse_sections(text)
-    body = StringIO.new(text)
-    outline = []
-    begin
-      while(true)
-        line = body.readline
-        if( (line =~ /#/) == 0)
-          #We arn't using h1 so first layer is h2
-          outline.push( [ line.gsub('#','').strip, line.count('#') - 1 ] )
-        end
-      end
-    rescue    
-    end
-    outline
+  attr_reader :args
+  attr_reader :options
+  def initialize(args,options)
+    @args = args
+    @options = options
   end
 end
 
-app = App.new
+require File.expand_path(File.dirname(__FILE__)+"/../lib/add_attraction")
+app = App.new ARGV, options
+app.extend AddAttraction
 app.run
 #puts attributes

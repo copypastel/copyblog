@@ -1,6 +1,6 @@
 @title Operation
 @author daicoden
-@published 01.20.08
+@status :published => 01.03.08
 
 ## Background
 
