@@ -10,3 +10,5 @@ Dependencies
 * haml
 * Rails
 * Bluecloth
+* Mechanize
+* json
