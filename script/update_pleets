@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+module UpdatePleets
+  def self.run
+    pleet_settings = YAML.load_file(File.expand_path(File.dirname(__FILE__) + "/../config/copyblog.yml"))[:pleets]
+    user_settings = pleet_settings[:users]
+
+    user_settings.each do |service,settings|
+      case service
+      when :plurk
+        update_plurks settings
+      when :twitter
+        update_tweets settings
+      end
+    end
+  end
+  #known bug, gets all plurks on timeline
+  def self.update_plurks(settings)
+    plurk = Plurk::Base.new settings[:username], settings[:password]
+    plurk.login
+    plurks = plurk.get_plurks_new settings[:username], :limit => 3
+    plurks.each do |plurk|
+      pleet = Pleet.first :conditions => {:pleet_id => plurk.id, :origin => "plurk"}
+      if pleet.nil?
+        Pleet.create :pleet_id => plurk.id, :origin => "plurk", :author => settings[:username],
+                     :msg => "#{settings[:username]} #{plurk.qualifier} #{plurk.content}", 
+                     :time => plurk.posted
+      end
+    end
+  end
+
+  def update_twitter(settings)
+    raise NotImplementedError
+  end
+end
+
+UpdatePleets.run

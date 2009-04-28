@@ -1,0 +1,9 @@
+pleets:
+    users:
+        plurk:
+            username: user1
+            password: pass1
+        twitter:
+            username: user2
+            password: pass2
+    

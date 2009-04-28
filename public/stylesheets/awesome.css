@@ -127,12 +127,12 @@ body{
   color: #000;
 }
 
-.tweet_header{
+.pleet_header{
   padding-left: 7px;
   opacity: 1;
 }
 
-.tweet{
+.pleet{
   width: 95%;
   margin-bottom: 15px;
   //    border-left: 2px solid red;
