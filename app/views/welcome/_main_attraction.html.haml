@@ -16,4 +16,4 @@
         %i
           = link_to att.title, att, :style => 'float: left;'
       %span{ :class => 'article_date' }
-        = 'on' + att.published
+        = 'on' + att.when.strftime("%m.%d.%y")
