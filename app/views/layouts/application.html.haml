@@ -6,5 +6,7 @@
     = stylesheet_link_tag 'awesome'
     = javascript_include_tag 'jquery-1.3.2.js'
   %body
-    #title{ :style => 'font-size: 3em; text-align: center;' } We've just moved to a new version and have some cleaning up to do. Say, about, 1 day?
+    #title{ :style => 'font-size: 3em; text-align: center;' } 
+      copy
+      #span{ :id => 'click', :onClick => '$("#cover").animate({height: "200px"}, 900, "swing", function(){$("#click").html("");});', :style => 'color:#8FD92E;'}pastel
     = yield
