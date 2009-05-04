@@ -6,11 +6,21 @@
     = stylesheet_link_tag 'awesome'
     = javascript_include_tag 'jquery-1.3.2.js'
   %body
-    #title{:style => 'font-size: 3em; text-align: center;'}
+    #title
       copy
-      %span{ :id => 'click', :style => 'color:#8FD92E;'}>
-        pastel
+      %span{ :id => 'click'}> pastel
+      %span{ :id => 'cover'}
+        
     = yield
     
-    #script
+    %script
+      var words = ['code', 'blog', 'tweet', 'pastel', 'hack', 'play']
+      function rand( limit ){
+      return Math.floor( Math.random()*limit );
+      }
+      $('#cover').animate({height: '100px'}, 900, 'swing', function(){$('#click').html(words[rand(words.length)]);});
+      //alert(words[rand(words.length)]);
+      //setTimeout("$('#cover').animate({height: '200px'}, 900, 'swing', function(){$('#click').html('');});",500);
+      setTimeout("$('#cover').animate({height: 0}, 900);",1000);
+      // $('#cover').animate({height: 0}, 900););alert('hi');",500);      
       //onClick => '$("#cover").animate({height: "200px"}, 900, "swing", function(){$("#click").html("");});'
