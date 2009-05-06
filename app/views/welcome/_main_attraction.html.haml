@@ -5,10 +5,10 @@
     %b{ :style => 'color: crimson;' }> attraction
   #main_image{ :style => "background: url(#{@latest_attraction.img_url});" }
     #caption_bar
-    #caption_text
-      %div{ :style => 'padding-left: 10px; float: left;' }
+    #caption_text{ :style => 'border-top: 5px solid white;'}
+      %div{ :style => 'padding-left: 10px; float: left; position: relative; top: 15%;' }
         %u= link_to @latest_attraction.title, @latest_attraction, :style => "color: white; font-weight: normal;"
-      %div{ :style => 'color: white; float: right; padding-right: 10px;' }
+      %div{ :style => 'color: white; float: right; padding-right: 10px; position: relative; top: 15%;' }
         = 'on ' + @latest_attraction.when.strftime("%m.%d.%y")
   - @attractions.each do |att|
     .article
