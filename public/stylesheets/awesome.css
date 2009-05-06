@@ -64,9 +64,9 @@ body{
   width: 1140px;
 }
 
-#left_column{
+#left-column{
   width: 300px; 
-  height: 500px; 
+  min-height: 500px; 
   float: left;
 }
 
@@ -120,7 +120,7 @@ body{
 }
 
 .active_tag{
-  background: url(../images/active.png); 
+  background: url('/images/active.png'); 
   float: left; 
   margin-left: 10px; 
   height: 16px; 
@@ -191,15 +191,12 @@ body{
   margin-right: 20px;
 }
 
-#about{
-  height: 80px;
-  width: 250px;
-  float: left;
-  background: #eee;
+#logo{
+  height: 200px;
+  width: 200px;
   margin-top: 20px;
-  margin-left: 7px;
-  padding: 10px;
-  color: #777;
+  background: url('/images/logo.png');
+  float: left;
 }
 
 
