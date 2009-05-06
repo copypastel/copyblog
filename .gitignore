@@ -5,3 +5,4 @@ schema.rb
 public/images/attractions/*
 database.yml
 copyblog.yml
+*~
