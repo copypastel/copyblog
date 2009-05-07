@@ -26,6 +26,7 @@ a:visited{
 
 body{
   padding: 25px;
+  color: black;
 }
 
 #post h2{
@@ -57,6 +58,15 @@ body{
 	font-family: futura;
 	font-size: 4em;
 	position: relative;
+}
+
+#title a{
+  color: black;
+  font-weight: normal;
+}
+
+#title a:hover{
+  text-decoration: none;
 }
 
 #container{

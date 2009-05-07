@@ -7,8 +7,9 @@
     = javascript_include_tag 'jquery-1.3.2.js'
   %body
     #title
-      %div{ :style => 'float: left; font-family: futura;'} copy
-      %span{ :id => 'click'}> pastel
+      %a{ :href => '/' }
+        %div{ :style => 'float: left; font-family: futura; color: black;'} copy
+        %span{ :id => 'click'}> pastel
       %span{ :id => 'cover'}
         
     = yield
