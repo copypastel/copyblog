@@ -21,11 +21,9 @@ To make this work, there must be no need for text selection plus +C. I was lu
 
 ### <a name="Options">Options</a>
 
-
 There are two scenarios where copying the password directly to the clipboard may be vexing. Some entry forms don’t make use of the system clipboard, thus making it impossible to paste in a password. All right, so just add an option to display said password. The more concerning situation occurs when generating a new password for a new account: since a master password is needed for the hashing operation, that opens up an opportunity for a typo. Were it an old account, the user would likely try to generate the password again and miss the typo this time. However, the same user will be hard-pressed when trying to access a new account and not being able to generate the correct password due to the typo. Solution: add an option that confirms the inputted master password.
 
 ### <a name="Omnipresence">Omnipresence</a>
-
 
 Up to this point, the improvements over using a Dashboard widget aren’t really outstanding. Perhaps merely cosmetic. Having to launch a terminal window, or at least keep one around in the background to change to, really ruins the workflow. In the end, what really makes it all come together happens to be [visor.app](http://code.google.com/p/blacktree-visor/), which provides an ever present, Quake-style terminal.
 
