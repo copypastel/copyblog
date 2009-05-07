@@ -11,4 +11,4 @@
       %span{ :style => 'color: #888;' } 
         %i= pleet.time
     .pleet
-      = pleet.msg
+      = pleet.msg.gsub(pleet.author + ' ','')
