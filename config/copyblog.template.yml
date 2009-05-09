@@ -1,9 +1,10 @@
-pleets:
-    users:
-        plurk:
-            username: user1
-            password: pass1
-        twitter:
-            username: user2
-            password: pass2
+blogname: Copyblog
+services:
+  github:
+    reponame: myrepo
+  attractions:
+    attraction_folder: /static/path/to/folder
+  pleets:
+    plurk: [user1, user2]
+    twitter: user2
     
