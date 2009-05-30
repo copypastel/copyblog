@@ -6,9 +6,9 @@
     140
   - @pleets.each do |pleet|
     .pleet_header
-      %a{ :href => Pleet.url_for(pleet) }
+      %a{ :href => pleet.uri }
         %b= pleet.author
-      %span{ :style => 'color: #888;' } 
+      %span{ :style => 'color: #888;' }
         %i= pleet.time
     .pleet
       = pleet.msg.gsub(pleet.author + ' ','')

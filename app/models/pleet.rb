@@ -1,18 +1,29 @@
-class Pleet < CPL::Tools::YPipes::Base
-
-  def self.url_for(pleet)
-    if pleet.plurk?
-      "http://plurk.com/#{pleet.author}"
-    else
-      "http://twitter.com/#{pleet.author}"
+class Pleet
+  def self.all
+    config = CPL::Service::Lessthan140
+    yPipeUri =config.pipeurl
+    pleets = []
+    config.users.each_pair do |user,services|
+      query = yPipeUri+"&_render=json&" + services.collect{ |s| "#{s}=#{user}"}.join("&")
+      dat = JSON.parse(open(query).read)
+      dat['value']['items'].each do |item|
+        author = item['author']
+        msg    = item['msg']
+        uri    = item['uri']
+        time   = item['time']
+        pleets.push(Pleet.new(author,msg,uri,time))
+      end
     end
+
+    pleets.sort_by { |p| p.time }
   end
 
-  def plurk?
-    self.origin == "plurk"
-  end
-
-  def twitter?
-    self.origin == "twitter"
+  attr_reader   :author,:msg,:uri,:time
+  def initialize(author, msg, uri, time)
+    #HI ECIN UNCOMMENT THE COMMENTED STUFF
+    @author = "Daicdon"#author
+    @msg = "Fix the pipes ecin, then go to app/models/pleet.rb and edit initialize.  You will see what to do."#msg
+    @uri = "http://plurk.com"#uri
+    @time = Time.now#time
   end
 end

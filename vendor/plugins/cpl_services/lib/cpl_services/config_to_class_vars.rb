@@ -2,12 +2,13 @@ module CPL::Service::ConfigToClassVars
   def init(config)
     config.each_pair do |key,value|
       @subclass.class_eval do
-        eval "
-        @#{key} = '#{value}'
-        def self.#{key}
-          @#{key}
-        end
+        propdef = "
+          def self.#{key}
+            @#{key}
+          end
         "
+        eval propdef
+        self.instance_variable_set("@#{key}",value)
       end
     end
   end
