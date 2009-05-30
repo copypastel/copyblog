@@ -1,5 +1,3 @@
 #!/usr/bin/env ruby
 require File.dirname(__FILE__) + '/../config/boot'
 require 'commands/server'
-# Only want to do the cron stuff when running the server
-require File.dirname(__FILE__ + '/../lib/cron_setup')
