@@ -4,7 +4,7 @@ class Pleet
     yPipeUri =config.pipeurl
     pleets = []
     config.users.each_pair do |user,services|
-      query = yPipeUri+"&_render=json&" + services.collect{ |s| "#{s}=#{user}"}.join("&")
+      query = yPipeUri+"&_render=json&limit=3&" + services.collect{ |s| "#{s}=#{user}"}.join("&")
       dat = JSON.parse(open(query).read)
       dat['value']['items'].each do |item|
         author = item['author']
