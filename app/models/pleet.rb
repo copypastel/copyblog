@@ -15,14 +15,14 @@ class Pleet
       end
     end
 
-    pleets.sort_by { |p| p.time }
+    pleets.sort_by { |p| p.time }.reverse
   end
 
   attr_reader   :author,:msg,:uri,:time
   def initialize(author, msg, uri, time)
-    @author = author
+    @author = author.downcase
     @msg = msg
     @uri = uri
-    @time = time
+    @time = Time.at(time.to_i)
   end
 end
