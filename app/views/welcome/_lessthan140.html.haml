@@ -9,6 +9,6 @@
       %a{ :href => pleet.uri }
         %b= pleet.author
       %span{ :style => 'color: #888;' }
-        %i= (time_ago_in_words(pleet.time) + " ago").gsub(" ",".").gsub("about ","")
+        %i= (time_ago_in_words(pleet.time) + " ago").gsub("about ","").gsub(" ",".")
     .pleet
       = pleet.msg.gsub(pleet.author + ' ','')
