@@ -20,10 +20,9 @@ class Pleet
 
   attr_reader   :author,:msg,:uri,:time
   def initialize(author, msg, uri, time)
-    #HI ECIN UNCOMMENT THE COMMENTED STUFF
-    @author = "Daicdon"#author
-    @msg = "Fix the pipes ecin, then go to app/models/pleet.rb and edit initialize.  You will see what to do."#msg
-    @uri = "http://plurk.com"#uri
-    @time = Time.now#time
+    @author = author
+    @msg = msg
+    @uri = uri
+    @time = time
   end
 end
