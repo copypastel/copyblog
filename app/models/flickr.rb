@@ -22,6 +22,6 @@ class Flickr < CPL::Tools::YPipes::Base
     @url = url
     @img_src = img_src
     @alt = alt
-    @time = time
+    @time = Time.at(time.to_i)
   end
 end
