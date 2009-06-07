@@ -5,4 +5,5 @@
     %b{ :style => 'color: #ff7b00'}> media
   .flickr_thumbnail
     - @flickr_images.each do |img|
-      %img{ :src => img.url}
+      %a{ :href => img.url}
+        %img{ :src => img.img_src, :alt => img.alt}

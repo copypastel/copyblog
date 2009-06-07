@@ -4,6 +4,6 @@ class WelcomeController < ApplicationController
     @attractions = Attraction.all
     @latest_attraction = @attractions.delete_at(0)
     @github_projects = GithubProject.all
-    @flickr_images = []
+    @flickr_images = Flickr.all
   end
 end

@@ -7,6 +7,8 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 require 'open-uri'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/ypipes')
+require 'hpricot'
 Rails::Initializer.run do |config|
   # Settings in config/envOBironments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -17,6 +19,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'bluecloth'
+  config.gem 'mechanize'
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
