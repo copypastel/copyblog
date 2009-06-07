@@ -7,14 +7,14 @@ class Flickr < CPL::Tools::YPipes::Base
     CPL::Service::Flickr.users.each { |u| u_ids.push(CPL::Service::Flickr.username_to_id(u))}
     
     u_ids.each do |uid|
-      super(:limit => 4, :user_id => uid) do |items|
+      super(:limit => 8, :user_id => uid) do |items|
         items.each do |item|
           flickrs.push(Flickr.new(item['url'],item['img_src'],item['alt'],item['time']))
         end
       end
     end
     
-    flickrs.sort_by { |p| p.time }.reverse
+    flickrs.sort_by { |p| p.time }.reverse.first(8)
   end
   
   attr_reader   :url,:img_src,:alt,:time
