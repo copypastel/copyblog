@@ -25,6 +25,7 @@ module CPL::Tools::YPipes
       json = self.call_pipe(paramaters)
       items = json['value']['items']
       yield(items) if block_given?
+      items
     end
   end
 end
