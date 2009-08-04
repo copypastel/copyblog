@@ -7,7 +7,7 @@
 Turns out I'm not good at blogging.  So screw it.  This is for those of you who need to:
 
 * Setup Mephisto in a subdirectory
-* Getting a sanitation error when accessing admin on a subdirectory mounted mephisto app
+* Fix a sanitation error when accessing admin on a subdirectory mounted mephisto app
 * Those of you who searched for setting up Mephisto with a prefix (Go Go Keyword Parsing)
 
 It took me two hours to get mephisto running on a prefix path.  It seems there is a post lacking.  This is running with Apache 2 and [bleeding edge mephisto](http://github.com/emk/mephisto/commit/0535b5ff99d45c94e6cb5d54d8ddaf24081840bd).
@@ -16,7 +16,7 @@ It took me two hours to get mephisto running on a prefix path.  It seems there i
 
 We will use `port 3456` and `prefix blog` for this example
 
-1. Do the installation get it running.
+1. Do the [installation](http://mephistoblog.com/docs/setup) and get it running.
 2. Edit `app/views/layouts/application.html.erb` and change line 9 from: `<script type="text/javascript">Mephisto.root = '<%= relative_url_root %>'; <%= init_mephisto_authenticity_token %></script>` to `<script type="text/javascript">Mephisto.root = '<%= h(relative_url_root) %>'; <%= init_mephisto_authenticity_token %></script>`.  Note the h() around relative_url_root.  This would have caused problems when accessing admin once you are setup.
 3. Edit `app/views/layoust/simple.html.erb` and do the same thing.
 4. Setup apache in `/etc/httpd/conf/extra/httpd-vhosts.conf` with the following:
@@ -51,9 +51,9 @@ We will use `port 3456` and `prefix blog` for this example
         </Directory>
     </VirtualHost>
     
-  For those of you who are curious as to why you point the proxy pass to domain.com:3456/blog it's because using the prefix option for mongrel mounts the whole thing on /blog.  But you need apache to catch the /blog and route it somewhere different (not the root server).  If you just routed it to :3456/ you would have to visit /blog/blog.  One for apache and one for mongrel.  You have to use the prefix option however because all of your resources need to be at /blog.
+  For those of you who are curious as to why you point the proxy pass to domain.com:3456/blog, it's because using the prefix option for mongrel mounts the whole thing on /blog.  But you need apache to catch the /blog and route it somewhere different (not the root server).  If you just routed it to :3456/ you would have to visit /blog/blog.  One for apache and one for mongrel.  You have to use the prefix option, however, because all of your resources need to be at /blog.
 5. Enable the vhost file if you don't have it.  It's somewhere commented in your apache config file.
-6. start the server with mongrel_start -e production -p 3456 -d --prefix /blog
+6. Start the server with mongrel_start -e production -p 3456 -d --prefix /blog
 
 ## Conclusion
 
