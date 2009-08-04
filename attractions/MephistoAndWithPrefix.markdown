@@ -18,6 +18,7 @@ We will use `port 3456` and `prefix blog` for this example
 
 1. Do the installation get it running.
 2. Edit `app/views/layouts/application.html.erb` and change line 9 from: `<script type="text/javascript">Mephisto.root = '<%= relative_url_root %>'; <%= init_mephisto_authenticity_token %></script>` to `<script type="text/javascript">Mephisto.root = '<%= h(relative_url_root) %>'; <%= init_mephisto_authenticity_token %></script>`.  Note the h() around relative_url_root.  This would have caused problems when accessing admin once you are setup.
+3. Edit `app/views/layoust/simple.html.erb` and do the same thing.
 4. Setup apache in `/etc/httpd/conf/extra/httpd-vhosts.conf` with the following:
 
     <VirtualHost *:80>
